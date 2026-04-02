@@ -1,5 +1,21 @@
 # ScreenGuilty — Change Log
 
+## 2026-04-02 (7차)
+
+### Mac App Store 스크린샷 제작
+
+**목적**: App Store 제출용 스크린샷 5장 생성
+- **생성 스크립트**: `docs/generate_screenshots.py` 신규 생성 (Python + Pillow)
+- **해상도**: 1280x800 (Mac App Store 필수 해상도)
+- **스크린샷 구성**:
+  1. `01_working_mode.png` — Xcode/터미널 업무 중 화면 + 뱀파이어 캐릭터 패널
+  2. `02_distraction_detected.png` — YouTube 시청 중 화난 뱀파이어 + 말풍선 경고
+  3. `03_settings.png` — 설정 화면 (캐릭터 크기, 감정 임계값 슬라이더)
+  4. `04_menubar_dropdown.png` — 메뉴바 드롭다운 (오늘 통계 + TOP 딴짓 앱)
+  5. `05_daily_report.png` — 일일 죄책감 리포트 (생산성 원형 차트 + 앱별 통계)
+- **디자인**: macOS 다크 테마, SF 시스템 폰트, 설명 텍스트 오버레이 포함
+- **파일**: `docs/generate_screenshots.py` (신규), `docs/screenshots/*.png` (5개 신규)
+
 ## 2026-04-02 (6차)
 
 ### App Sandbox 엔타이틀먼트 파일 추가
