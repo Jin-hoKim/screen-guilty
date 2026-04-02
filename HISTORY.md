@@ -7,6 +7,18 @@
 - `HISTORY.md` 생성
 - Phase 1~4 개발 단계 정의
 
+### bundleProxyForCurrentProcess 크래시 수정 (5차)
+
+**문제**: `Thread 1 Queue : com.apple.main-thread (serial)` 런타임 크래시 재발
+- **원인 1**: `AppMonitor.swift`에서 `.app` 번들 가드가 제거되어 `NSWorkspace.shared` 접근 시 bundleProxy nil 크래시 재발
+- **원인 2**: `DailyReportView.swift`의 `DailyReportScheduler.scheduleNotification()`에서 `Bundle.main.bundleIdentifier`를 직접 체크하는 guard 추가 — 그런데 `bundleIdentifier` 접근 자체가 bundleProxy를 사용하므로 guard가 크래시를 유발
+- **해결**:
+  - `AppMonitor.swift`: `.app` 번들 가드 복원 (`Bundle.main.bundleURL.pathExtension == "app"`)
+  - `DailyReportView.swift`: `Bundle.main.bundleIdentifier != nil` → `Bundle.main.bundleURL.pathExtension == "app"` 으로 교체, 불필요한 `do {}` 블록 제거
+  - `bundleURL`은 CFBundle C-레벨에서 직접 읽으므로 bundleProxy 없이 안전하게 접근 가능
+- **수정 파일**: `ScreenGuilty/AppMonitor.swift`, `ScreenGuilty/Views/DailyReportView.swift`
+- **검증**: `xcodebuild` 빌드 성공 (에러 0, 경고 0)
+
 ### bundleProxyForCurrentProcess 런타임 크래시 수정 (4차)
 
 **문제**: `Thread 1 Queue : com.apple.main-thread (serial)` 런타임 크래시 재발

@@ -223,13 +223,18 @@ struct DailyReportView: View {
 // MARK: - 일일 리포트 알림 스케줄러
 class DailyReportScheduler {
     static func scheduleNotification() {
+        // .app 번들로 실행되지 않은 경우 UNUserNotificationCenter 접근 시
+        // bundleProxyForCurrentProcess nil 크래시 발생
+        // Bundle.main.bundleURL은 CFBundle 레벨에서 읽으므로 bundleProxy 없이 안전
+        guard Bundle.main.bundleURL.pathExtension == "app" else { return }
+
         let center = UNUserNotificationCenter.current()
 
         center.requestAuthorization(options: [.alert, .sound]) { granted, _ in
             guard granted else { return }
 
             let content = UNMutableNotificationContent()
-            content.title = "오늘의 죄책감 리포트 📊"
+            content.title = "오늘의 죄책감 리포트"
             content.body = "오늘 하루 어떻게 보냈는지 확인해보세요!"
             content.sound = .default
 
