@@ -28,17 +28,17 @@ enum EmotionLevel: String, CaseIterable, Codable {
         }
     }
 
-    /// 메뉴바 이모지 표정 (뱀파이어 테마)
-    var emoji: String {
+    /// SF Symbols 아이콘명
+    var iconName: String {
         switch self {
-        case .working: return "🧛‍💻"
-        case .peaceful: return "🧛"
-        case .disappointed: return "🧛‍♂️"
-        case .sad: return "😿"
-        case .crying: return "😭"
-        case .angry: return "👿"
-        case .smile: return "🧛‍♀️"
-        case .excited: return "🦇"
+        case .working:      return "laptopcomputer"
+        case .peaceful:     return "face.smiling"
+        case .disappointed: return "face.smiling.inverse"
+        case .sad:          return "cloud.drizzle"
+        case .crying:       return "cloud.rain"
+        case .angry:        return "flame"
+        case .smile:        return "hand.thumbsup"
+        case .excited:      return "star.fill"
         }
     }
 

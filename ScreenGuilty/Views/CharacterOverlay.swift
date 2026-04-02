@@ -227,8 +227,9 @@ struct EmojiCharacterView: View {
                 .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
 
             // 이모지 표정
-            Text(emotion.emoji)
-                .font(.system(size: 40))
+            Image(systemName: emotion.iconName)
+                .font(.system(size: 36))
+                .foregroundColor(.white)
                 .scaleEffect(bouncing ? 1.2 : 1.0)
                 .animation(
                     emotion == .excited

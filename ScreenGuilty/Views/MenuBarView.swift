@@ -41,8 +41,9 @@ struct MenuBarView: View {
     // MARK: - 상태 섹션
     private var statusSection: some View {
         HStack(spacing: 10) {
-            Text(appState.currentEmotion.emoji)
+            Image(systemName: appState.currentEmotion.iconName)
                 .font(.title2)
+                .foregroundColor(appState.isDistracted ? .red : .green)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(appState.isDistracted ? "Slacking off..." : "Working hard")
