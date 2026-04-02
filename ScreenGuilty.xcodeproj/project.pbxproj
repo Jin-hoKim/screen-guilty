@@ -1,0 +1,410 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA1000000000000000000031 /* ScreenGuiltyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000011 /* ScreenGuiltyApp.swift */; };
+		AA1000000000000000000032 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000012 /* AppState.swift */; };
+		AA1000000000000000000033 /* AppMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000013 /* AppMonitor.swift */; };
+		AA1000000000000000000034 /* EmotionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000014 /* EmotionEngine.swift */; };
+		AA1000000000000000000035 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000015 /* SoundPlayer.swift */; };
+		AA1000000000000000000036 /* CharacterOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000016 /* CharacterOverlay.swift */; };
+		AA1000000000000000000037 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000017 /* MenuBarView.swift */; };
+		AA1000000000000000000038 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000018 /* SettingsView.swift */; };
+		AA1000000000000000000039 /* DailyReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000019 /* DailyReportView.swift */; };
+		AA100000000000000000003A /* AppClassificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100000000000000000001A /* AppClassificationView.swift */; };
+		AA100000000000000000003B /* AppCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100000000000000000001B /* AppCategory.swift */; };
+		AA100000000000000000003C /* EmotionLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100000000000000000001C /* EmotionLevel.swift */; };
+		AA100000000000000000003D /* UsageStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100000000000000000001D /* UsageStats.swift */; };
+		AA100000000000000000003E /* DailyReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100000000000000000001E /* DailyReport.swift */; };
+		AA100000000000000000003F /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000020 /* Resources */; };
+		AA1000000000000000000040 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AA1000000000000000000061 /* Lottie */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA1000000000000000000005 /* ScreenGuilty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreenGuilty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA1000000000000000000011 /* ScreenGuiltyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenGuiltyApp.swift; sourceTree = "<group>"; };
+		AA1000000000000000000012 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		AA1000000000000000000013 /* AppMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMonitor.swift; sourceTree = "<group>"; };
+		AA1000000000000000000014 /* EmotionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionEngine.swift; sourceTree = "<group>"; };
+		AA1000000000000000000015 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		AA1000000000000000000016 /* CharacterOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterOverlay.swift; sourceTree = "<group>"; };
+		AA1000000000000000000017 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		AA1000000000000000000018 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AA1000000000000000000019 /* DailyReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyReportView.swift; sourceTree = "<group>"; };
+		AA100000000000000000001A /* AppClassificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClassificationView.swift; sourceTree = "<group>"; };
+		AA100000000000000000001B /* AppCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCategory.swift; sourceTree = "<group>"; };
+		AA100000000000000000001C /* EmotionLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionLevel.swift; sourceTree = "<group>"; };
+		AA100000000000000000001D /* UsageStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageStats.swift; sourceTree = "<group>"; };
+		AA100000000000000000001E /* DailyReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyReport.swift; sourceTree = "<group>"; };
+		AA100000000000000000001F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA1000000000000000000020 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA1000000000000000000007 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA1000000000000000000040 /* Lottie in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA1000000000000000000002 /* MainGroup */ = {
+			isa = PBXGroup;
+			children = (
+				AA1000000000000000000050 /* ScreenGuilty */,
+				AA1000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA1000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA1000000000000000000005 /* ScreenGuilty.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA1000000000000000000050 /* ScreenGuilty */ = {
+			isa = PBXGroup;
+			children = (
+				AA1000000000000000000011 /* ScreenGuiltyApp.swift */,
+				AA1000000000000000000012 /* AppState.swift */,
+				AA1000000000000000000013 /* AppMonitor.swift */,
+				AA1000000000000000000014 /* EmotionEngine.swift */,
+				AA1000000000000000000015 /* SoundPlayer.swift */,
+				AA1000000000000000000051 /* Views */,
+				AA1000000000000000000052 /* Models */,
+				AA100000000000000000001F /* Info.plist */,
+				AA1000000000000000000020 /* Resources */,
+			);
+			path = ScreenGuilty;
+			sourceTree = "<group>";
+		};
+		AA1000000000000000000051 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA1000000000000000000016 /* CharacterOverlay.swift */,
+				AA1000000000000000000017 /* MenuBarView.swift */,
+				AA1000000000000000000018 /* SettingsView.swift */,
+				AA1000000000000000000019 /* DailyReportView.swift */,
+				AA100000000000000000001A /* AppClassificationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AA1000000000000000000052 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA100000000000000000001B /* AppCategory.swift */,
+				AA100000000000000000001C /* EmotionLevel.swift */,
+				AA100000000000000000001D /* UsageStats.swift */,
+				AA100000000000000000001E /* DailyReport.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA1000000000000000000004 /* ScreenGuilty */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA100000000000000000000E /* Build configuration list for PBXNativeTarget "ScreenGuilty" */;
+			buildPhases = (
+				AA1000000000000000000006 /* Sources */,
+				AA1000000000000000000007 /* Frameworks */,
+				AA1000000000000000000008 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScreenGuilty;
+			packageProductDependencies = (
+				AA1000000000000000000061 /* Lottie */,
+			);
+			productName = ScreenGuilty;
+			productReference = AA1000000000000000000005 /* ScreenGuilty.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA1000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					AA1000000000000000000004 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = AA100000000000000000000B /* Build configuration list for PBXProject "ScreenGuilty" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA1000000000000000000002;
+			packageReferences = (
+				AA1000000000000000000060 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
+			productRefGroup = AA1000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA1000000000000000000004 /* ScreenGuilty */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA1000000000000000000008 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA100000000000000000003F /* Resources in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA1000000000000000000006 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA1000000000000000000031 /* ScreenGuiltyApp.swift in Sources */,
+				AA1000000000000000000032 /* AppState.swift in Sources */,
+				AA1000000000000000000033 /* AppMonitor.swift in Sources */,
+				AA1000000000000000000034 /* EmotionEngine.swift in Sources */,
+				AA1000000000000000000035 /* SoundPlayer.swift in Sources */,
+				AA1000000000000000000036 /* CharacterOverlay.swift in Sources */,
+				AA1000000000000000000037 /* MenuBarView.swift in Sources */,
+				AA1000000000000000000038 /* SettingsView.swift in Sources */,
+				AA1000000000000000000039 /* DailyReportView.swift in Sources */,
+				AA100000000000000000003A /* AppClassificationView.swift in Sources */,
+				AA100000000000000000003B /* AppCategory.swift in Sources */,
+				AA100000000000000000003C /* EmotionLevel.swift in Sources */,
+				AA100000000000000000003D /* UsageStats.swift in Sources */,
+				AA100000000000000000003E /* DailyReport.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AA1000000000000000000009 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA100000000000000000000A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		AA100000000000000000000C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ScreenGuilty/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.screenguilty.app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		AA100000000000000000000D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ScreenGuilty/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.screenguilty.app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA100000000000000000000B /* Build configuration list for PBXProject "ScreenGuilty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA1000000000000000000009 /* Debug */,
+				AA100000000000000000000A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA100000000000000000000E /* Build configuration list for PBXNativeTarget "ScreenGuilty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA100000000000000000000C /* Debug */,
+				AA100000000000000000000D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA1000000000000000000060 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA1000000000000000000061 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA1000000000000000000060 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+	};
+	rootObject = AA1000000000000000000001 /* Project object */;
+}

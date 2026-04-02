@@ -7,6 +7,15 @@
 - `HISTORY.md` 생성
 - Phase 1~4 개발 단계 정의
 
+### Xcode 프로젝트 생성 + bundleProxyForCurrentProcess 에러 수정
+
+**문제**: `bundleProxyForCurrentProcess is nil` 런타임 에러
+- **원인**: SPM `executableTarget`은 macOS `.app` 번들을 생성하지 않아 `NSWorkspace` 등 AppKit API가 정상 동작 불가
+- **해결**:
+  - `ScreenGuilty.xcodeproj/project.pbxproj` 생성 — 진짜 Xcode 프로젝트로 `.app` 번들 생성
+  - `ScreenGuilty/SoundPlayer.swift` 수정 — `Bundle.module` (SPM 전용) 제거, `Bundle.main` 통일
+- **검증**: `xcodebuild` 클린빌드 성공, `ScreenGuilty.app` 번들 정상 생성 확인
+
 ### 초기 구현 완료 (Phase 1~4)
 
 **생성된 파일**:
