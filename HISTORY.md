@@ -1,5 +1,22 @@
 # ScreenGuilty — Change Log
 
+## 2026-04-02 (6차)
+
+### App Sandbox 엔타이틀먼트 파일 추가
+
+**목적**: App Store 배포를 위한 올바른 Sandbox 설정 완성
+- **문제**: `ENABLE_APP_SANDBOX = YES`가 build settings에만 존재하고, 실제 `.entitlements` 파일 및 `CODE_SIGN_ENTITLEMENTS` 설정이 누락되어 있었음
+- **수정**:
+  - `ScreenGuilty/ScreenGuilty.entitlements` 파일 생성 (`com.apple.security.app-sandbox = true` 만 포함)
+  - `project.pbxproj`: PBXFileReference에 엔타이틀먼트 파일 추가
+  - `project.pbxproj`: ScreenGuilty 그룹에 파일 참조 추가
+  - `project.pbxproj`: Debug/Release 빌드 설정에 `CODE_SIGN_ENTITLEMENTS` 추가
+- **Sandbox 권한**: App Sandbox만 활성화, 네트워크/파일/카메라/마이크 등 불필요 권한 전부 비활성화
+- **NSWorkspace 호환성**: `didActivateApplicationNotification` 기반 앱 감지는 Sandbox에서 정상 동작
+- **UNUserNotificationCenter 호환성**: 알림 기능 Sandbox에서 정상 동작
+- **빌드 결과**: `BUILD SUCCEEDED` (0 errors, 0 warnings)
+- **파일**: `ScreenGuilty/ScreenGuilty.entitlements` (신규), `ScreenGuilty.xcodeproj/project.pbxproj`
+
 ## 2026-04-02 (5차)
 
 ### 뱀파이어 캐릭터 앱 아이콘 제작
