@@ -98,32 +98,8 @@ struct MenuBarView: View {
     // MARK: - 설정 섹션
     private var settingsSection: some View {
         VStack(alignment: .leading, spacing: 0) {
-            menuButton(title: "앱 분류 설정", icon: "list.bullet") {
-                appState.showSettings = true
-            }
-
-            // 사운드 토글
-            Button {
-                appState.isSoundEnabled.toggle()
-            } label: {
-                HStack {
-                    Image(systemName: appState.isSoundEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
-                        .frame(width: 18)
-                    Text(appState.isSoundEnabled ? "사운드 ON" : "사운드 OFF")
-                    Spacer()
-                    if appState.isSoundEnabled {
-                        Image(systemName: "checkmark")
-                            .foregroundColor(.accentColor)
-                    }
-                }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 6)
-                .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
-
-            menuButton(title: "캐릭터 크기 설정", icon: "slider.horizontal.3") {
-                appState.showSettings = true
+            menuButton(title: "설정", icon: "gearshape.fill") {
+                openWindow(id: "settings")
             }
         }
     }

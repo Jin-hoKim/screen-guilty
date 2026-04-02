@@ -26,28 +26,27 @@ enum EmotionLevel: String, CaseIterable, Codable {
         }
     }
 
-    /// 메뉴바 이모지 표정
+    /// 메뉴바 이모지 표정 (뱀파이어 테마)
     var emoji: String {
         switch self {
-        case .peaceful: return "😊"
-        case .disappointed: return "😔"
-        case .sad: return "😢"
+        case .peaceful: return "🧛"
+        case .disappointed: return "🧛‍♂️"
+        case .sad: return "😿"
         case .crying: return "😭"
-        case .angry: return "😡"
-        case .smile: return "😄"
-        case .excited: return "🎉"
+        case .angry: return "👿"
+        case .smile: return "🧛‍♀️"
+        case .excited: return "🦇"
         }
     }
 
-    /// 딴짓 시간(초) → 감정 단계
+    /// 딴짓 시간(초) → 감정 단계 (설정된 임계값 기반)
     static func from(distractionSeconds: Int) -> EmotionLevel {
-        switch distractionSeconds {
-        case 0..<120:    return .peaceful       // 0~2분
-        case 120..<300:  return .disappointed   // 2~5분
-        case 300..<900:  return .sad            // 5~15분
-        case 900..<1800: return .crying         // 15~30분
-        default:          return .angry          // 30분+
-        }
+        let t = EmotionThresholds.load()
+        if distractionSeconds < t.disappointed { return .peaceful }
+        if distractionSeconds < t.sad { return .disappointed }
+        if distractionSeconds < t.crying { return .sad }
+        if distractionSeconds < t.angry { return .crying }
+        return .angry
     }
 
     /// 복귀 시 감정 (이전 딴짓 단계 기반)

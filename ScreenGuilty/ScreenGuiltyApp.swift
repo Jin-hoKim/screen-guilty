@@ -54,9 +54,7 @@ struct ScreenGuiltyApp: App {
         MenuBarExtra {
             MenuBarView(appState: appState)
         } label: {
-            // 메뉴바 아이콘: 현재 감정 이모지
-            Text(appState.currentEmotion.emoji)
-                .font(.body)
+            Image(systemName: "sunglasses.fill")
         }
         .menuBarExtraStyle(.window)
 
@@ -65,7 +63,7 @@ struct ScreenGuiltyApp: App {
             SettingsView(appState: appState)
         }
         .windowResizability(.contentSize)
-        .defaultSize(width: 520, height: 420)
+        .defaultSize(width: 520, height: 580)
         .keyboardShortcut(",", modifiers: .command)
 
         // 일일 리포트 창

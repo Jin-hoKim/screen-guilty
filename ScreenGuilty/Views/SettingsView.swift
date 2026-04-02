@@ -72,6 +72,49 @@ struct GeneralSettingsTab: View {
                     .foregroundColor(.secondary)
             }
 
+            // 감정 변화 임계 시간
+            Section("감정 변화 타이밍") {
+                HStack {
+                    Text("실망")
+                    Spacer()
+                    Stepper(
+                        "\(appState.emotionThresholds.disappointed)초",
+                        value: $appState.emotionThresholds.disappointed,
+                        in: 5...300, step: 5
+                    )
+                }
+                HStack {
+                    Text("슬픔")
+                    Spacer()
+                    Stepper(
+                        "\(appState.emotionThresholds.sad)초",
+                        value: $appState.emotionThresholds.sad,
+                        in: 10...600, step: 10
+                    )
+                }
+                HStack {
+                    Text("울기")
+                    Spacer()
+                    Stepper(
+                        "\(appState.emotionThresholds.crying)초",
+                        value: $appState.emotionThresholds.crying,
+                        in: 30...1800, step: 30
+                    )
+                }
+                HStack {
+                    Text("분노")
+                    Spacer()
+                    Stepper(
+                        "\(appState.emotionThresholds.angry)초",
+                        value: $appState.emotionThresholds.angry,
+                        in: 60...3600, step: 60
+                    )
+                }
+                Text("딴짓 시작 후 각 감정으로 변하는 시간을 설정합니다.")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+
             // 시작 프로그램
             Section("시스템") {
                 Toggle("로그인 시 자동 시작", isOn: $appState.launchAtLogin)

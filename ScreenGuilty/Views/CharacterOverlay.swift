@@ -1,5 +1,6 @@
 import AppKit
 import SwiftUI
+import Lottie
 
 /// NSPanel 기반 캐릭터 오버레이 (Dock 위에 항상 표시)
 class CharacterPanel: NSPanel {
@@ -45,7 +46,8 @@ class CharacterPanel: NSPanel {
         let fullFrame = screen.frame
 
         let size = appState?.characterSize.pixels ?? 80
-        let panelSize = size + 20  // 여백 포함
+        let panelWidth = size + 80  // 말풍선 좌우 여백
+        let panelHeight = size + 80  // 말풍선 위쪽 공간
 
         // Dock 위치 감지
         let dockOnBottom = visibleFrame.origin.y > fullFrame.origin.y + 5
@@ -56,21 +58,20 @@ class CharacterPanel: NSPanel {
         var y: CGFloat
 
         if dockOnBottom {
-            x = visibleFrame.midX - panelSize / 2
-            y = visibleFrame.origin.y + 5
+            x = visibleFrame.midX - panelWidth / 2
+            y = visibleFrame.origin.y - 10
         } else if dockOnLeft {
             x = visibleFrame.origin.x + 5
-            y = visibleFrame.midY - panelSize / 2
+            y = visibleFrame.midY - panelHeight / 2
         } else if dockOnRight {
-            x = visibleFrame.maxX - panelSize - 5
-            y = visibleFrame.midY - panelSize / 2
+            x = visibleFrame.maxX - panelWidth - 5
+            y = visibleFrame.midY - panelHeight / 2
         } else {
-            // Dock 자동숨기기 → 화면 하단 중앙
-            x = fullFrame.midX - panelSize / 2
-            y = fullFrame.origin.y + 5
+            x = fullFrame.midX - panelWidth / 2
+            y = fullFrame.origin.y - 10
         }
 
-        self.setFrame(NSRect(x: x, y: y, width: panelSize, height: panelSize), display: true)
+        self.setFrame(NSRect(x: x, y: y, width: panelWidth, height: panelHeight), display: true)
     }
 
     // MARK: - Dock 위치 변경 감지
@@ -126,7 +127,8 @@ struct CharacterOverlayView: View {
                     .offset(y: -appState.characterSize.pixels / 2 - 30)
             }
         }
-        .padding(10)
+        .frame(maxHeight: .infinity, alignment: .bottom)
+        .padding(.bottom, 10)
         .onChange(of: appState.currentEmotion) { _, newEmotion in
             isAngryShaking = (newEmotion == .angry)
         }
@@ -177,13 +179,20 @@ struct CharacterOverlayView: View {
     }
 }
 
-// MARK: - Lottie 캐릭터 뷰 (Lottie 없으면 SF Symbols로 폴백)
+// MARK: - Lottie 캐릭터 뷰
 struct LottieCharacterView: View {
     let emotionLevel: EmotionLevel
 
     var body: some View {
-        // Lottie 임포트가 가능하면 LottieView 사용, 없으면 SF Symbols 폴백
-        EmojiCharacterView(emotion: emotionLevel)
+        // Swift Package의 리소스는 Bundle.module에서 로드
+        if let url = Bundle.module.url(forResource: emotionLevel.animationName, withExtension: "json") {
+            LottieView(animation: .filepath(url.path))
+                .playbackMode(.playing(.toProgress(1, loopMode: .loop)))
+                .animationSpeed(emotionLevel == .angry ? 1.5 : 1.0)
+        } else {
+            // JSON 파일 없으면 이모지 폴백
+            EmojiCharacterView(emotion: emotionLevel)
+        }
     }
 }
 

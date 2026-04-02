@@ -20,7 +20,13 @@ class AppState: ObservableObject {
         didSet { UserDefaults.standard.set(isSoundEnabled, forKey: "soundEnabled") }
     }
     @Published var characterSize: CharacterSize {
-        didSet { UserDefaults.standard.set(characterSize.rawValue, forKey: "characterSize") }
+        didSet {
+            UserDefaults.standard.set(characterSize.rawValue, forKey: "characterSize")
+            NotificationCenter.default.post(name: .dockPositionChanged, object: nil)
+        }
+    }
+    @Published var emotionThresholds: EmotionThresholds {
+        didSet { emotionThresholds.save() }
     }
     @Published var distractionThresholdMinutes: Int {
         didSet { UserDefaults.standard.set(distractionThresholdMinutes, forKey: "distractionThreshold") }
@@ -53,6 +59,7 @@ class AppState: ObservableObject {
         self.isSoundEnabled = UserDefaults.standard.object(forKey: "soundEnabled") as? Bool ?? true
         let sizeRaw = UserDefaults.standard.string(forKey: "characterSize") ?? CharacterSize.medium.rawValue
         self.characterSize = CharacterSize(rawValue: sizeRaw) ?? .medium
+        self.emotionThresholds = EmotionThresholds.load()
         self.distractionThresholdMinutes = UserDefaults.standard.integer(forKey: "distractionThreshold").nonZero
         self.launchAtLogin = UserDefaults.standard.bool(forKey: "launchAtLogin")
 
