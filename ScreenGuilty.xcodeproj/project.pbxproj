@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		057F18DC2F7E64210010FE99 /* EmotionThresholds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F18DB2F7E64210010FE99 /* EmotionThresholds.swift */; };
+		057F18DE2F7E68320010FE99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 057F18DD2F7E68320010FE99 /* Assets.xcassets */; };
 		AA1000000000000000000030 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000010 /* main.swift */; };
 		AA1000000000000000000031 /* ScreenGuiltyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000011 /* ScreenGuiltyApp.swift */; };
 		AA1000000000000000000032 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000012 /* AppState.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		057F18DB2F7E64210010FE99 /* EmotionThresholds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionThresholds.swift; sourceTree = "<group>"; };
+		057F18DD2F7E68320010FE99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA1000000000000000000005 /* ScreenGuilty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreenGuilty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1000000000000000000010 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		AA1000000000000000000011 /* ScreenGuiltyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenGuiltyApp.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 		AA1000000000000000000050 /* ScreenGuilty */ = {
 			isa = PBXGroup;
 			children = (
+				057F18DD2F7E68320010FE99 /* Assets.xcassets */,
 				AA1000000000000000000010 /* main.swift */,
 				AA1000000000000000000011 /* ScreenGuiltyApp.swift */,
 				AA1000000000000000000012 /* AppState.swift */,
@@ -182,6 +185,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				057F18DE2F7E68320010FE99 /* Assets.xcassets in Resources */,
 				AA100000000000000000003F /* Resources in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
