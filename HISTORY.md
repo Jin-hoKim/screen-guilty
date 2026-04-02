@@ -7,7 +7,17 @@
 - `HISTORY.md` 생성
 - Phase 1~4 개발 단계 정의
 
-### Xcode 프로젝트 생성 + bundleProxyForCurrentProcess 에러 수정
+### bundleProxyForCurrentProcess 런타임 크래시 근본 수정 (2차)
+
+**문제**: `bundleProxyForCurrentProcess is nil` 런타임 NSException
+- **원인**: `ScreenGuiltyApp.init()`에서 `NSWorkspace.shared`를 직접 호출 → NSApplication이 완전히 초기화되기 전 접근
+- **해결**: `@NSApplicationDelegateAdaptor(AppDelegate.self)` 도입
+  - `AppDelegate.applicationDidFinishLaunching()`으로 `AppMonitor.start()`, 타이머, 캐릭터 패널, DailyReportScheduler 초기화 지연
+  - `ScreenGuiltyApp.init()`에서 모든 AppKit-의존 코드 제거
+- **수정 파일**: `ScreenGuilty/ScreenGuiltyApp.swift`
+- **검증**: `xcodebuild` 클린빌드 성공 (에러 0, 경고 0)
+
+### Xcode 프로젝트 생성 + bundleProxyForCurrentProcess 에러 수정 (1차)
 
 **문제**: `bundleProxyForCurrentProcess is nil` 런타임 에러
 - **원인**: SPM `executableTarget`은 macOS `.app` 번들을 생성하지 않아 `NSWorkspace` 등 AppKit API가 정상 동작 불가
