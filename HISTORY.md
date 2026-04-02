@@ -7,6 +7,19 @@
 - `HISTORY.md` 생성
 - Phase 1~4 개발 단계 정의
 
+### bundleProxyForCurrentProcess 런타임 크래시 최종 수정 (3차)
+
+**문제**: `bundleProxyForCurrentProcess is nil` 런타임 NSException 재발
+- **진짜 근본 원인**: `Package.swift`가 `executableTarget`으로 정의되어 있어, Xcode에서 `Package.swift`를 직접 열거나 `swift run` 실행 시 `.app` 번들 없이 실행됨
+  - 이전 DerivedData 경로: `screen-guilty-clqtusirbesoomhjyfzueiyxnjya` (Package.swift 기반)
+  - 새 DerivedData 경로: `ScreenGuilty-fnversieinzmqwaseakpywljdzfq` (xcodeproj 기반)
+- **해결**:
+  1. `Package.swift` 완전 삭제 — `ScreenGuilty.xcodeproj`가 모든 의존성(Lottie) 직접 관리
+  2. `project.pbxproj` Debug 빌드 설정에 `CODE_SIGN_IDENTITY = "-"`, `CODE_SIGN_STYLE = Manual` 추가 → "Sign to Run Locally" 서명 보장
+  3. `AppMonitor.start()` 번들 검증 가드 추가 — `.app` 번들이 아닌 경우 NSWorkspace 접근 전 조기 반환
+- **수정 파일**: `Package.swift` (삭제), `ScreenGuilty.xcodeproj/project.pbxproj`, `ScreenGuilty/AppMonitor.swift`
+- **검증**: `xcodebuild` 빌드 성공 (에러 0, 경고 0), `ScreenGuilty.app` 번들 정상 생성, "Sign to Run Locally" 코드 서명 확인
+
 ### bundleProxyForCurrentProcess 런타임 크래시 근본 수정 (2차)
 
 **문제**: `bundleProxyForCurrentProcess is nil` 런타임 NSException
