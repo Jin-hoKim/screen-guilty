@@ -1,5 +1,18 @@
 # ScreenGuilty — Change Log
 
+## 2026-04-02 (2차)
+
+### App Store 메타데이터 작성
+
+- **파일 생성**: `APP_STORE_METADATA.md`
+  - 앱 이름 및 서브타이틀
+  - 앱 설명 한국어 / 영어 (4000자 이내)
+  - 키워드: productivity, fun, dock, character, distraction, focus, work, timer, emoji, vampire
+  - 지원 URL / 개인정보 처리방침 URL
+  - 심사 메모 (한국어 + 영어)
+  - 연령 등급 (4+), 카테고리 (Productivity / Utilities), 버전 정보
+- **기존 파일 확인**: `docs/privacy-policy.html` 이미 작성 완료 (영문, GitHub Pages 배포용)
+
 ## 2026-04-02
 
 ### App icon & build settings fix for App Store submission
