@@ -1,5 +1,13 @@
 # ScreenGuilty — Change Log
 
+## 2026-04-02 (QA)
+
+### Release 빌드 코드 서명 충돌 수정
+- **이슈**: Release 빌드 시 `CODE_SIGN_IDENTITY = "Apple Distribution"`과 `CODE_SIGN_STYLE = Automatic`이 충돌하여 빌드 실패
+- **수정**: `CODE_SIGN_IDENTITY`를 `"Apple Development"`로 변경 (Automatic 서명 모드와 호환)
+- **파일**: `ScreenGuilty.xcodeproj/project.pbxproj`
+- **결과**: Release 빌드 성공 (BUILD SUCCEEDED)
+
 ## 2026-04-02 (7차)
 
 ### Mac App Store 스크린샷 제작
