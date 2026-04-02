@@ -114,8 +114,9 @@ struct AppClassificationView: View {
                 }
             }
 
+            let finalApps = apps
             await MainActor.run {
-                self.installedApps = apps
+                self.installedApps = finalApps
                 self.isLoadingApps = false
             }
         }
@@ -171,15 +172,9 @@ struct AppClassificationRow: View {
 
 // MARK: - 설치된 앱 모델
 struct InstalledApp: Identifiable {
-    var id: String { bundleId }
     let bundleId: String
     let name: String
     let url: URL?
 
-    init(bundleId: String, name: String, url: URL?) {
-        self.id = bundleId
-        self.bundleId = bundleId
-        self.name = name
-        self.url = url
-    }
+    var id: String { bundleId }
 }

@@ -37,9 +37,16 @@
 - UserDefaults + JSON으로 일별 통계 영속화
 - 매일 18:00 UserNotification 리포트 알림 스케줄
 
-### 빌드 오류 수정
+### 빌드 오류 수정 (1차)
 
 - `ScreenGuilty/ScreenGuiltyApp.swift` — escaping closure가 struct의 mutating self를 캡처하는 문제 수정 (CharacterPanelHolder 클래스 도입)
 - `ScreenGuilty/Views/AppClassificationView.swift` — InstalledApp init에 id 파라미터 누락 오류 수정 (커스텀 init 추가)
 - `ScreenGuilty/Resources/Characters/README.md`, `Sounds/README.md` — 동일 이름 리소스 충돌 해결 (파일명 변경)
 - **빌드 결과**: `Build complete!`
+
+### 빌드 오류 수정 (2차 — QA 피드백 반영)
+
+- `ScreenGuilty/Views/AppClassificationView.swift`
+  - `InstalledApp` 구조체: 저장 프로퍼티 `id`와 `Identifiable` 요구사항 충돌 수정 → 커스텀 init 제거하고 `var id: String { bundleId }` 연산 프로퍼티로 변경
+  - concurrent capture 경고 수정: `apps` → `finalApps` 로컬 복사 후 `MainActor.run` 전달
+- **클린 빌드 결과**: `Build complete!` (에러 0, 경고 0)
