@@ -1,5 +1,29 @@
 # ScreenGuilty — Change Log
 
+## 2026-04-02 (5차)
+
+### 뱀파이어 캐릭터 앱 아이콘 제작
+
+- **generate_icon.py**: Python + Pillow로 뱀파이어 아이콘 생성 스크립트 신규 작성
+- **아이콘 디자인**:
+  - 배경: macOS 둥근 모서리 + 진한 보라(#19082D) 그라데이션
+  - 캐릭터: 창백한 얼굴, 검은 머리, 빨간 눈(글로우), 송곳니, 피 한 방울
+  - 장식: 배경 박쥐 4마리, 별빛 파티클, 빨간 망토 칼라, 흰 셔츠
+- **생성된 파일** (AppIcon.appiconset):
+  - icon_16x16.png (16px)
+  - icon_16x16@2x.png (32px)
+  - icon_32x32.png (32px)
+  - icon_32x32@2x.png (64px)
+  - icon_128x128.png (128px)
+  - icon_128x128@2x.png (256px)
+  - icon_256x256.png (256px)
+  - icon_256x256@2x.png (512px)
+  - icon_512x512.png (512px)
+  - icon_512x512@2x.png (1024px)
+  - icon_1024x1024.png (1024px)
+  - AppIcon.png (1024px)
+- **Resources/AppIcon.icns**: iconutil로 macOS icns 파일 재생성
+
 ## 2026-04-02 (4차)
 
 ### 앱 완성도 마무리 검증
