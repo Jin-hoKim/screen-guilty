@@ -7,6 +7,18 @@
 - `HISTORY.md` 생성
 - Phase 1~4 개발 단계 정의
 
+### bundleProxyForCurrentProcess 런타임 크래시 수정 (4차)
+
+**문제**: `Thread 1 Queue : com.apple.main-thread (serial)` 런타임 크래시 재발
+- **근본 원인**: `applicationDidFinishLaunching` 동기 실행 중 `monitor.start()` → `NSWorkspace.shared` 접근 시 bundleProxyForCurrentProcess 미초기화
+  - `.app` 번들로 실행 중임에도 Xcode 디버그 실행 환경에서는 bundleProxy가 비동기적으로 초기화됨
+  - `applicationDidFinishLaunching` 동기 콜백 시점에는 아직 bundleProxy 초기화 미완료
+- **해결**: `monitor.start()` 호출을 `DispatchQueue.main.async { }` 로 감싸서 다음 런루프 사이클로 지연
+  - 첫 런루프 이벤트 처리 이후에는 bundleProxy가 반드시 초기화됨
+  - `applicationDidFinishLaunching` → 런루프 시작 → 이벤트 처리 → `monitor.start()` 순서 보장
+- **수정 파일**: `ScreenGuilty/ScreenGuiltyApp.swift`
+- **검증**: `xcodebuild` 빌드 성공 (에러 0, 경고 0)
+
 ### bundleProxyForCurrentProcess 런타임 크래시 최종 수정 (3차)
 
 **문제**: `bundleProxyForCurrentProcess is nil` 런타임 NSException 재발

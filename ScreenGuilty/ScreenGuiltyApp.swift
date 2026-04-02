@@ -15,11 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         let state = AppState.shared
 
-        // NSWorkspace는 applicationDidFinishLaunching 이후에만 접근 가능
-        // init()에서 접근 시 "bundleProxyForCurrentProcess is nil" 크래시 발생
         let monitor = AppMonitor(appState: state)
         self.appMonitor = monitor
-        monitor.start()
 
         // 타이머 시작
         state.startTimer()
@@ -31,6 +28,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let panel = CharacterPanel(appState: state)
         panelHolder.panel = panel
         panel.orderFront(nil)
+
+        // NSWorkspace.shared 접근은 다음 런루프 사이클로 반드시 지연해야 한다.
+        // applicationDidFinishLaunching 동기 실행 중에는 Xcode 디버그 실행 환경에서
+        // bundleProxyForCurrentProcess 초기화가 완료되지 않아 NSException이 발생한다.
+        // DispatchQueue.main.async로 감싸면 첫 런루프 이벤트 처리 후 실행되어 안전하다.
+        DispatchQueue.main.async {
+            monitor.start()
+        }
     }
 
     func applicationWillTerminate(_ notification: Notification) {
@@ -39,8 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 }
 
-/// ScreenGuilty 앱 진입점
-@main
+/// ScreenGuilty 앱 진입점 (@main은 main.swift에서 호출)
 struct ScreenGuiltyApp: App {
     @StateObject private var appState = AppState.shared
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
