@@ -1,5 +1,19 @@
 # ScreenGuilty — Change Log
 
+## 2026-04-02 (3차)
+
+### 코드 서명 설정 완료
+
+- **Debug config**:
+  - `ASSETCATALOG_COMPILER_APPICON_NAME = ""` → `AppIcon` 수정 (디버그 빌드에서도 앱 아이콘 포함)
+- **Release config**:
+  - `CODE_SIGNING_ALLOWED = YES` 추가
+  - `CODE_SIGNING_REQUIRED = YES` 추가
+  - `CODE_SIGN_IDENTITY = "Apple Distribution"` 추가 (App Store 배포용 인증서)
+  - `PROVISIONING_PROFILE_SPECIFIER = ""` 추가 (자동 프로비저닝)
+- **공통 설정** (이미 존재): `CODE_SIGN_STYLE = Automatic`, `DEVELOPMENT_TEAM = 5376EHCG2P`, `PRODUCT_BUNDLE_IDENTIFIER = com.jworks.ScreenGuilty`
+- **파일**: `ScreenGuilty.xcodeproj/project.pbxproj`
+
 ## 2026-04-02 (2차)
 
 ### App Store 메타데이터 작성
