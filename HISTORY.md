@@ -16,7 +16,11 @@
 - **해결**: `monitor.start()` 호출을 `DispatchQueue.main.async { }` 로 감싸서 다음 런루프 사이클로 지연
   - 첫 런루프 이벤트 처리 이후에는 bundleProxy가 반드시 초기화됨
   - `applicationDidFinishLaunching` → 런루프 시작 → 이벤트 처리 → `monitor.start()` 순서 보장
-- **수정 파일**: `ScreenGuilty/ScreenGuiltyApp.swift`
+- **추가 조치**:
+  - `@main` 제거 → `main.swift` 도입으로 명시적 앱 진입점 분리
+  - `ScreenGuilty.xcodeproj/xcshareddata/xcschemes/ScreenGuilty.xcscheme` 생성 → Xcode가 항상 `.app` 번들 타겟으로 실행하도록 강제
+  - `project.pbxproj`에 `main.swift` 소스 파일 추가
+- **수정 파일**: `ScreenGuilty/ScreenGuiltyApp.swift`, `ScreenGuilty/main.swift` (신규), `ScreenGuilty.xcodeproj/project.pbxproj`, `ScreenGuilty.xcodeproj/xcshareddata/xcschemes/ScreenGuilty.xcscheme` (신규)
 - **검증**: `xcodebuild` 빌드 성공 (에러 0, 경고 0)
 
 ### bundleProxyForCurrentProcess 런타임 크래시 최종 수정 (3차)
