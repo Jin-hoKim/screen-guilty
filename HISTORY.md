@@ -1,5 +1,20 @@
 # ScreenGuilty — Change Log
 
+## 2026-04-02 (App Store 제출)
+
+### Build 11 아카이브 & App Store Connect 업로드
+
+- **작업**: 빌드 번호 10 → 11 증가 후 새 아카이브 생성 및 업로드
+- **수정**:
+  - `Info.plist`: `CFBundleVersion` = 10 → 11
+  - `project.pbxproj`: `CURRENT_PROJECT_VERSION` = 2 → 11 (Info.plist 값과 동기화)
+  - `ExportOptions.plist` 신규 생성 (app-store-connect, teamID: 5376EHCG2P)
+- **빌드 결과**: `** ARCHIVE SUCCEEDED **` (0 errors, 경고 무시 가능)
+- **업로드 결과**: `Uploaded ScreenGuilty` — App Store Connect 처리 중
+- **다음 단계**: App Store Connect에서 Build 11 선택 → 스크린샷/메타데이터 입력 → 심사 제출
+
+---
+
 ## 2026-04-02 (QA)
 
 ### Release 빌드 코드 서명 충돌 수정
