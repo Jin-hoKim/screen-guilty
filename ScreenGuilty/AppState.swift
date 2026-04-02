@@ -53,7 +53,7 @@ class AppState: ObservableObject {
         self.isSoundEnabled = UserDefaults.standard.object(forKey: "soundEnabled") as? Bool ?? true
         let sizeRaw = UserDefaults.standard.string(forKey: "characterSize") ?? CharacterSize.medium.rawValue
         self.characterSize = CharacterSize(rawValue: sizeRaw) ?? .medium
-        self.distractionThresholdMinutes = UserDefaults.standard.integer(forKey: "distractionThreshold").nonZero ?? 2
+        self.distractionThresholdMinutes = UserDefaults.standard.integer(forKey: "distractionThreshold").nonZero
         self.launchAtLogin = UserDefaults.standard.bool(forKey: "launchAtLogin")
 
         // 커스텀 카테고리 불러오기
@@ -124,7 +124,6 @@ class AppState: ObservableObject {
         currentBundleId = bundleId
         currentAppName = appName
 
-        let wasDistracted = isDistracted
         let previousEmotion = currentEmotion
 
         switch cat {

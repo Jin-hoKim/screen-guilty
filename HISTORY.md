@@ -50,3 +50,9 @@
   - `InstalledApp` 구조체: 저장 프로퍼티 `id`와 `Identifiable` 요구사항 충돌 수정 → 커스텀 init 제거하고 `var id: String { bundleId }` 연산 프로퍼티로 변경
   - concurrent capture 경고 수정: `apps` → `finalApps` 로컬 복사 후 `MainActor.run` 전달
 - **클린 빌드 결과**: `Build complete!` (에러 0, 경고 0)
+
+### QA 최종 검증 및 경고 수정
+
+- `ScreenGuilty/AppState.swift` — `.nonZero ?? 2` 불필요한 nil coalescing 제거, `wasDistracted` 미사용 변수 제거
+- `ScreenGuilty/Views/DailyReportView.swift` — 미사용 `url` 변수를 `_`로 교체
+- **최종 빌드 결과**: 에러 0건, 경고 0건

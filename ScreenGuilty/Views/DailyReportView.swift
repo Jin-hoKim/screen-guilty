@@ -214,8 +214,8 @@ struct DailyReportView: View {
         panel.nameFieldStringValue = "ScreenGuilty_리포트_\(report.formattedDate).png"
 
         panel.begin { response in
-            guard response == .OK, let url = panel.url else { return }
-            // NSView를 이미지로 렌더링하는 로직은 실제 구현 시 추가
+            guard response == .OK, let _ = panel.url else { return }
+            // TODO: NSView를 이미지로 렌더링하는 로직 추가
         }
     }
 }
