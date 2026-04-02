@@ -36,3 +36,10 @@
 - 캐릭터: Lottie JSON 없으면 이모지 기반 폴백
 - UserDefaults + JSON으로 일별 통계 영속화
 - 매일 18:00 UserNotification 리포트 알림 스케줄
+
+### 빌드 오류 수정
+
+- `ScreenGuilty/ScreenGuiltyApp.swift` — escaping closure가 struct의 mutating self를 캡처하는 문제 수정 (CharacterPanelHolder 클래스 도입)
+- `ScreenGuilty/Views/AppClassificationView.swift` — InstalledApp init에 id 파라미터 누락 오류 수정 (커스텀 init 추가)
+- `ScreenGuilty/Resources/Characters/README.md`, `Sounds/README.md` — 동일 이름 리소스 충돌 해결 (파일명 변경)
+- **빌드 결과**: `Build complete!`

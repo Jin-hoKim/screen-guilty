@@ -171,8 +171,15 @@ struct AppClassificationRow: View {
 
 // MARK: - 설치된 앱 모델
 struct InstalledApp: Identifiable {
-    let id: String  // bundleId
+    var id: String { bundleId }
     let bundleId: String
     let name: String
     let url: URL?
+
+    init(bundleId: String, name: String, url: URL?) {
+        self.id = bundleId
+        self.bundleId = bundleId
+        self.name = name
+        self.url = url
+    }
 }

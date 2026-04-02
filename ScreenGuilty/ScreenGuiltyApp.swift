@@ -1,14 +1,17 @@
 import SwiftUI
 import AppKit
 
+/// 캐릭터 패널 홀더 (struct에서 escaping closure 문제 회피용)
+private class CharacterPanelHolder {
+    var panel: CharacterPanel?
+}
+
 /// ScreenGuilty 앱 진입점
 @main
 struct ScreenGuiltyApp: App {
     @StateObject private var appState = AppState.shared
     private var appMonitor: AppMonitor
-
-    // NSPanel 기반 캐릭터 오버레이
-    private var characterPanel: CharacterPanel?
+    private let panelHolder = CharacterPanelHolder()
 
     init() {
         let state = AppState.shared
@@ -25,10 +28,11 @@ struct ScreenGuiltyApp: App {
         // 일일 리포트 알림 스케줄
         DailyReportScheduler.scheduleNotification()
 
-        // 캐릭터 패널 초기화
+        // 캐릭터 패널 초기화 (panelHolder는 참조 타입이므로 캡처 가능)
+        let holder = panelHolder
         Task { @MainActor in
-            self.characterPanel = CharacterPanel(appState: state)
-            self.characterPanel?.orderFront(nil)
+            holder.panel = CharacterPanel(appState: state)
+            holder.panel?.orderFront(nil)
         }
     }
 
