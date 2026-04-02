@@ -2,6 +2,18 @@
 
 ## 2026-04-02
 
+### App Store 심사 제출을 위한 아이콘 및 빌드 설정 수정
+
+**문제**: App Store Connect 업로드 시 "Missing required icon. The application bundle does not have an icon in ICNS format containing a 512pt x 512pt @2x image" 에러
+- **원인**: Release 빌드 설정의 `ASSETCATALOG_COMPILER_APPICON_NAME`이 빈 문자열(`""`)로 설정되어 아이콘이 번들에 포함되지 않음
+- **해결**:
+  - `ASSETCATALOG_COMPILER_APPICON_NAME = ""` → `AppIcon`으로 수정 (Release 설정)
+  - `Contents.json`에 표준 macOS 아이콘셋 10종 구성 확인 (16~512pt, 1x/2x)
+  - 모든 아이콘 파일 픽셀 크기 검증 완료 (icon_512x512@2x.png = 1024x1024)
+  - 빌드 번호 1 → 2 증가
+- **수정 파일**: `ScreenGuilty.xcodeproj/project.pbxproj`, `ScreenGuilty/Assets.xcassets/AppIcon.appiconset/Contents.json`
+- **결과**: App Store Connect 빌드 1.0.0 (10) 업로드 성공, 심사 제출 가능 상태
+
 ### 프로젝트 초기화 및 기획
 - `PLANNING.md` 작성 — 4단계 구현 계획 수립
 - `HISTORY.md` 생성

@@ -25,7 +25,7 @@
 | UI | SwiftUI |
 | 프레임워크 | AppKit (NSWorkspace), AVFoundation |
 | 최소 OS | macOS 14.0 (Sonoma) |
-| 빌드 도구 | Swift Package Manager |
+| 빌드 도구 | Xcode Project (.xcodeproj) |
 | 애니메이션 | Lottie (lottie-ios) |
 
 ---
@@ -81,7 +81,7 @@ screen-guilty/
 ```bash
 git clone https://github.com/Jin-hoKim/screen-guilty.git
 cd screen-guilty
-open Package.swift
+open ScreenGuilty.xcodeproj
 ```
 
 ### 리소스 추가
