@@ -24,16 +24,7 @@ class SoundPlayer: NSObject {
         var soundURL: URL? = nil
 
         for ext in extensions {
-            // 앱 번들 리소스에서 사운드 파일 찾기
-            if let url = Bundle.main.url(forResource: soundName, withExtension: ext, subdirectory: "Sounds") {
-                soundURL = url
-                break
-            }
             if let url = Bundle.main.url(forResource: soundName, withExtension: ext, subdirectory: "Resources/Sounds") {
-                soundURL = url
-                break
-            }
-            if let url = Bundle.main.url(forResource: soundName, withExtension: ext) {
                 soundURL = url
                 break
             }

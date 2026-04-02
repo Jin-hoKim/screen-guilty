@@ -107,7 +107,7 @@ struct MenuBarView: View {
     // MARK: - 리포트 섹션
     private var reportSection: some View {
         menuButton(title: "일일 리포트 보기", icon: "chart.bar.fill") {
-            appState.showDailyReport = true
+            openWindow(id: "daily-report")
         }
     }
 

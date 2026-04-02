@@ -8,7 +8,7 @@ class AppState: ObservableObject {
     static let shared = AppState()
 
     // MARK: - 감정/딴짓 상태
-    @Published var currentEmotion: EmotionLevel = .peaceful
+    @Published var currentEmotion: EmotionLevel = .working
     @Published var distractionSeconds: Int = 0      // 현재 세션 딴짓 시간(초)
     @Published var productiveSeconds: Int = 0       // 오늘 업무 시간(초)
     @Published var isDistracted: Bool = false        // 현재 딴짓 중 여부
@@ -140,17 +140,21 @@ class AppState: ObservableObject {
                 isDistracted = true
             }
         case .productive:
+            // 업무 앱 사용 중이면 working 상태
+            if !isDistracted && currentEmotion != .working {
+                currentEmotion = .working
+            }
             if isDistracted {
                 // 업무 복귀
                 isDistracted = false
                 let returnEmotion = EmotionLevel.returnEmotion(from: previousEmotion)
                 currentEmotion = returnEmotion
 
-                // 복귀 감정은 3초 후 평화로운 상태로 돌아가기
+                // 복귀 감정은 3초 후 업무 중 상태로 전환
                 returnEmotionTimer?.invalidate()
                 returnEmotionTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { [weak self] _ in
                     Task { @MainActor [weak self] in
-                        self?.currentEmotion = .peaceful
+                        self?.currentEmotion = .working
                         self?.distractionSeconds = 0
                     }
                 }
@@ -210,23 +214,29 @@ class AppState: ObservableObject {
 
 // MARK: - 캐릭터 크기 설정
 enum CharacterSize: String, CaseIterable {
-    case small  = "small"   // 60px
-    case medium = "medium"  // 80px
-    case large  = "large"   // 120px
+    case xsmall = "xsmall"  // 60px
+    case small  = "small"   // 80px
+    case medium = "medium"  // 120px
+    case large  = "large"   // 150px
+    case xlarge = "xlarge"  // 200px
 
     var pixels: CGFloat {
         switch self {
-        case .small:  return 60
-        case .medium: return 80
-        case .large:  return 120
+        case .xsmall: return 60
+        case .small:  return 80
+        case .medium: return 120
+        case .large:  return 150
+        case .xlarge: return 200
         }
     }
 
     var displayName: String {
         switch self {
-        case .small:  return "작게 (60px)"
-        case .medium: return "보통 (80px)"
-        case .large:  return "크게 (120px)"
+        case .xsmall: return "60px"
+        case .small:  return "80px"
+        case .medium: return "120px"
+        case .large:  return "150px"
+        case .xlarge: return "200px"
         }
     }
 }

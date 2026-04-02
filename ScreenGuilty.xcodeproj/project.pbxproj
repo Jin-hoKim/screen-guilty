@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		057F18DC2F7E64210010FE99 /* EmotionThresholds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F18DB2F7E64210010FE99 /* EmotionThresholds.swift */; };
 		AA1000000000000000000030 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000010 /* main.swift */; };
 		AA1000000000000000000031 /* ScreenGuiltyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000011 /* ScreenGuiltyApp.swift */; };
 		AA1000000000000000000032 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000000000000000000012 /* AppState.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		057F18DB2F7E64210010FE99 /* EmotionThresholds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionThresholds.swift; sourceTree = "<group>"; };
 		AA1000000000000000000005 /* ScreenGuilty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreenGuilty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1000000000000000000010 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		AA1000000000000000000011 /* ScreenGuiltyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenGuiltyApp.swift; sourceTree = "<group>"; };
@@ -59,7 +61,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AA1000000000000000000002 /* MainGroup */ = {
+		AA1000000000000000000002 = {
 			isa = PBXGroup;
 			children = (
 				AA1000000000000000000050 /* ScreenGuilty */,
@@ -107,6 +109,7 @@
 		AA1000000000000000000052 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				057F18DB2F7E64210010FE99 /* EmotionThresholds.swift */,
 				AA100000000000000000001B /* AppCategory.swift */,
 				AA100000000000000000001C /* EmotionLevel.swift */,
 				AA100000000000000000001D /* UsageStats.swift */,
@@ -203,6 +206,7 @@
 				AA100000000000000000003A /* AppClassificationView.swift in Sources */,
 				AA100000000000000000003B /* AppCategory.swift in Sources */,
 				AA100000000000000000003C /* EmotionLevel.swift in Sources */,
+				057F18DC2F7E64210010FE99 /* EmotionThresholds.swift in Sources */,
 				AA100000000000000000003D /* UsageStats.swift in Sources */,
 				AA100000000000000000003E /* DailyReport.swift in Sources */,
 			);
@@ -323,13 +327,13 @@
 		AA100000000000000000000C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
-				CODE_SIGNING_REQUIRED = YES;
 				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5376EHCG2P;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ScreenGuilty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -338,8 +342,9 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.screenguilty.app";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jworks.ScreenGuilty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.9;
@@ -349,11 +354,18 @@
 		AA100000000000000000000D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				AUTOMATION_APPLE_EVENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5376EHCG2P;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ScreenGuilty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -362,8 +374,14 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.screenguilty.app";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jworks.ScreenGuilty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.9;
@@ -411,7 +429,6 @@
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
-
 	};
 	rootObject = AA1000000000000000000001 /* Project object */;
 }

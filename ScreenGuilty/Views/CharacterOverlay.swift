@@ -116,6 +116,9 @@ struct CharacterOverlayView: View {
                 .animation(.easeInOut(duration: 0.5), value: appState.currentEmotion)
                 .onTapGesture {
                     withAnimation { showTooltip.toggle() }
+                    if appState.isSoundEnabled {
+                        SoundPlayer.shared.play(emotion: appState.currentEmotion)
+                    }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                         withAnimation { showTooltip = false }
                     }
@@ -146,15 +149,9 @@ struct CharacterOverlayView: View {
     // MARK: - 툴팁 (딴짓 시간 표시)
     private var tooltipView: some View {
         VStack(spacing: 2) {
-            if appState.isDistracted {
-                Text("딴짓 중: \(formatSeconds(appState.distractionSeconds))")
-                    .font(.caption)
-                    .fontWeight(.medium)
-            } else {
-                Text("업무 중 👍")
-                    .font(.caption)
-                    .fontWeight(.medium)
-            }
+            Text(tooltipMessage)
+                .font(.caption)
+                .fontWeight(.medium)
             Text(appState.currentAppName)
                 .font(.caption2)
                 .foregroundColor(.secondary)
@@ -169,13 +166,34 @@ struct CharacterOverlayView: View {
         .frame(maxWidth: 160)
     }
 
+    private var tooltipMessage: String {
+        if appState.isDistracted {
+            let time = formatSeconds(appState.distractionSeconds)
+            switch appState.currentEmotion {
+            case .peaceful:     return "hmm.. \(time)"
+            case .disappointed: return "seriously..? \(time)"
+            case .sad:          return "i'm sad.. \(time)"
+            case .crying:       return "please stop.. \(time)"
+            case .angry:        return "GET BACK TO WORK! \(time)"
+            default:            return "slacking.. \(time)"
+            }
+        } else {
+            switch appState.currentEmotion {
+            case .working:  return "i'm working.."
+            case .smile:    return "welcome back!"
+            case .excited:  return "finally! you're back!"
+            default:        return "i'm here.."
+            }
+        }
+    }
+
     private func formatSeconds(_ seconds: Int) -> String {
         let h = seconds / 3600
         let m = (seconds % 3600) / 60
         let s = seconds % 60
-        if h > 0 { return "\(h)시간 \(m)분" }
-        if m > 0 { return "\(m)분 \(s)초" }
-        return "\(s)초"
+        if h > 0 { return "\(h)h \(m)m" }
+        if m > 0 { return "\(m)m \(s)s" }
+        return "\(s)s"
     }
 }
 
@@ -185,7 +203,7 @@ struct LottieCharacterView: View {
 
     var body: some View {
         // Swift Package의 리소스는 Bundle.module에서 로드
-        if let url = Bundle.module.url(forResource: emotionLevel.animationName, withExtension: "json") {
+        if let url = Bundle.main.url(forResource: emotionLevel.animationName, withExtension: "json", subdirectory: "Resources/Characters") {
             LottieView(animation: .filepath(url.path))
                 .playbackMode(.playing(.toProgress(1, loopMode: .loop)))
                 .animationSpeed(emotionLevel == .angry ? 1.5 : 1.0)
@@ -231,6 +249,7 @@ struct EmojiCharacterView: View {
 
     private var backgroundColor: Color {
         switch emotion {
+        case .working:      return Color.green.opacity(0.15)
         case .peaceful:     return Color.yellow.opacity(0.2)
         case .disappointed: return Color.blue.opacity(0.15)
         case .sad:          return Color.blue.opacity(0.25)
