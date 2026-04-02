@@ -8,9 +8,9 @@ enum AppCategoryType: String, Codable, CaseIterable {
 
     var displayName: String {
         switch self {
-        case .distraction: return "딴짓"
-        case .productive:  return "업무"
-        case .ignored:     return "무시"
+        case .distraction: return "Distraction"
+        case .productive:  return "Productive"
+        case .ignored:     return "Ignored"
         }
     }
 }

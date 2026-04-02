@@ -10,9 +10,9 @@ struct AppUsageRecord: Codable, Identifiable {
         let hours = totalSeconds / 3600
         let minutes = (totalSeconds % 3600) / 60
         if hours > 0 {
-            return "\(hours)시간 \(minutes)분"
+            return "\(hours)h \(minutes)m"
         } else {
-            return "\(minutes)분"
+            return "\(minutes)m"
         }
     }
 }
@@ -53,11 +53,11 @@ struct DailyUsageStats: Codable {
         let hours = seconds / 3600
         let minutes = (seconds % 3600) / 60
         if hours > 0 {
-            return "\(hours)시간 \(minutes)분"
+            return "\(hours)h \(minutes)m"
         } else if minutes > 0 {
-            return "\(minutes)분"
+            return "\(minutes)m"
         } else {
-            return "\(seconds)초"
+            return "\(seconds)s"
         }
     }
 

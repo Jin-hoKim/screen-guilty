@@ -10,16 +10,16 @@ struct SettingsView: View {
         TabView {
             GeneralSettingsTab(appState: appState)
                 .tabItem {
-                    Label("일반", systemImage: "gearshape")
+                    Label("General", systemImage: "gearshape")
                 }
 
             AppClassificationView(appState: appState)
                 .tabItem {
-                    Label("앱 분류", systemImage: "list.bullet")
+                    Label("App Classification", systemImage: "list.bullet")
                 }
         }
         .frame(width: 520, height: 420)
-        .navigationTitle("ScreenGuilty 설정")
+        .navigationTitle("ScreenGuilty Settings")
     }
 }
 
@@ -30,8 +30,8 @@ struct GeneralSettingsTab: View {
     var body: some View {
         Form {
             // 캐릭터 크기
-            Section("캐릭터") {
-                Picker("크기", selection: $appState.characterSize) {
+            Section("Character") {
+                Picker("Size", selection: $appState.characterSize) {
                     ForEach(CharacterSize.allCases, id: \.self) { size in
                         Text(size.displayName).tag(size)
                     }
@@ -52,74 +52,74 @@ struct GeneralSettingsTab: View {
             }
 
             // 사운드
-            Section("사운드") {
-                Toggle("사운드 활성화", isOn: $appState.isSoundEnabled)
+            Section("Sound") {
+                Toggle("Enable Sound", isOn: $appState.isSoundEnabled)
             }
 
             // 딴짓 판정 임계값
-            Section("딴짓 판정") {
+            Section("Distraction Detection") {
                 HStack {
-                    Text("딴짓으로 판정되는 시간")
+                    Text("Time before counting as distraction")
                     Spacer()
                     Stepper(
-                        "\(appState.distractionThresholdMinutes)분",
+                        "\(appState.distractionThresholdMinutes) min",
                         value: $appState.distractionThresholdMinutes,
                         in: 1...30
                     )
                 }
-                Text("선택한 앱을 이 시간 이상 사용하면 딴짓으로 집계됩니다.")
+                Text("Usage exceeding this time will be counted as distraction.")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
 
             // 감정 변화 임계 시간
-            Section("감정 변화 타이밍") {
+            Section("Emotion Timing") {
                 HStack {
-                    Text("실망")
+                    Text("Disappointed")
                     Spacer()
                     Stepper(
-                        "\(appState.emotionThresholds.disappointed)초",
+                        "\(appState.emotionThresholds.disappointed)s",
                         value: $appState.emotionThresholds.disappointed,
                         in: 5...300, step: 5
                     )
                 }
                 HStack {
-                    Text("슬픔")
+                    Text("Sad")
                     Spacer()
                     Stepper(
-                        "\(appState.emotionThresholds.sad)초",
+                        "\(appState.emotionThresholds.sad)s",
                         value: $appState.emotionThresholds.sad,
                         in: 10...600, step: 10
                     )
                 }
                 HStack {
-                    Text("울기")
+                    Text("Crying")
                     Spacer()
                     Stepper(
-                        "\(appState.emotionThresholds.crying)초",
+                        "\(appState.emotionThresholds.crying)s",
                         value: $appState.emotionThresholds.crying,
                         in: 30...1800, step: 30
                     )
                 }
                 HStack {
-                    Text("분노")
+                    Text("Angry")
                     Spacer()
                     Stepper(
-                        "\(appState.emotionThresholds.angry)초",
+                        "\(appState.emotionThresholds.angry)s",
                         value: $appState.emotionThresholds.angry,
                         in: 60...3600, step: 60
                     )
                 }
-                Text("딴짓 시작 후 각 감정으로 변하는 시간을 설정합니다.")
+                Text("Set the time for each emotion change after distraction starts.")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
 
             // 시작 프로그램
-            Section("시스템") {
-                Toggle("로그인 시 자동 시작", isOn: $appState.launchAtLogin)
+            Section("System") {
+                Toggle("Launch at Login", isOn: $appState.launchAtLogin)
 
-                Toggle("캐릭터 표시", isOn: $appState.isCharacterVisible)
+                Toggle("Show Character", isOn: $appState.isCharacterVisible)
             }
         }
         .formStyle(.grouped)

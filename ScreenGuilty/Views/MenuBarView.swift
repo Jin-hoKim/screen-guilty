@@ -28,7 +28,7 @@ struct MenuBarView: View {
             Divider().padding(.vertical, 4)
 
             // 종료
-            Button("ScreenGuilty 종료") {
+            Button("Quit ScreenGuilty") {
                 NSApplication.shared.terminate(nil)
             }
             .padding(.horizontal, 12)
@@ -45,7 +45,7 @@ struct MenuBarView: View {
                 .font(.title2)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(appState.isDistracted ? "딴짓 중..." : "열심히 일하는 중")
+                Text(appState.isDistracted ? "Slacking off..." : "Working hard")
                     .font(.headline)
                     .foregroundColor(appState.isDistracted ? .red : .green)
 
@@ -63,10 +63,10 @@ struct MenuBarView: View {
     // MARK: - 통계 섹션
     private var statsSection: some View {
         VStack(alignment: .leading, spacing: 4) {
-            statRow(label: "오늘의 딴짓 시간", value: appState.statsStore.today.formattedDistractionTime, color: .red)
-            statRow(label: "오늘의 업무 시간", value: appState.statsStore.today.formattedProductiveTime, color: .green)
+            statRow(label: "Distraction Time", value: appState.statsStore.today.formattedDistractionTime, color: .red)
+            statRow(label: "Productive Time", value: appState.statsStore.today.formattedProductiveTime, color: .green)
             statRow(
-                label: "생산성 점수",
+                label: "Productivity Score",
                 value: "\(appState.statsStore.today.productivityScore)%",
                 color: productivityColor
             )
@@ -98,7 +98,7 @@ struct MenuBarView: View {
     // MARK: - 설정 섹션
     private var settingsSection: some View {
         VStack(alignment: .leading, spacing: 0) {
-            menuButton(title: "설정", icon: "gearshape.fill") {
+            menuButton(title: "Settings", icon: "gearshape.fill") {
                 openWindow(id: "settings")
             }
         }
@@ -106,7 +106,7 @@ struct MenuBarView: View {
 
     // MARK: - 리포트 섹션
     private var reportSection: some View {
-        menuButton(title: "일일 리포트 보기", icon: "chart.bar.fill") {
+        menuButton(title: "View Daily Report", icon: "chart.bar.fill") {
             openWindow(id: "daily-report")
         }
     }

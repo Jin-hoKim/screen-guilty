@@ -15,11 +15,11 @@ struct AppClassificationView: View {
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.secondary)
-                TextField("앱 검색...", text: $searchText)
+                TextField("Search apps...", text: $searchText)
                     .textFieldStyle(.plain)
 
-                Picker("필터", selection: $selectedFilter) {
-                    Text("전체").tag(AppCategoryType?.none)
+                Picker("Filter", selection: $selectedFilter) {
+                    Text("All").tag(AppCategoryType?.none)
                     ForEach(AppCategoryType.allCases, id: \.self) { type in
                         Text(type.displayName).tag(AppCategoryType?.some(type))
                     }
@@ -33,7 +33,7 @@ struct AppClassificationView: View {
             Divider()
 
             if isLoadingApps {
-                ProgressView("앱 목록 로딩 중...")
+                ProgressView("Loading apps...")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 List {

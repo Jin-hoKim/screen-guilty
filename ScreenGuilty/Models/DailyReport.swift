@@ -24,22 +24,22 @@ struct DailyReport: Codable, Identifiable {
         let distractionMinutes = (distractionSeconds % 3600) / 60
 
         if distractionSeconds < 60 {
-            return "오늘 거의 딴짓을 안 했어요! 완벽한 하루였습니다. 👏"
+            return "Almost no slacking today! Perfect day."
         } else if distractionSeconds < 1800 {
             // 30분 미만
-            return "오늘 \(distractionMinutes)분 딴짓했습니다. 꽤 집중했네요!"
+            return "You slacked for \(distractionMinutes) minutes today. Not bad!"
         } else if distractionHours < 2 {
-            return "오늘 \(distractionMinutes > 0 ? "\(distractionHours)시간 \(distractionMinutes)분" : "\(distractionHours)시간") 딴짓했습니다. 내일은 더 열심히! 💪"
+            return "You slacked for \(distractionMinutes > 0 ? "\(distractionHours)h \(distractionMinutes)m" : "\(distractionHours)h") today. Try harder tomorrow!"
         } else {
-            return "오늘 \(distractionHours)시간 딴짓했습니다... 내일은 진짜로 열심히 해봐요! 😅"
+            return "You slacked for \(distractionHours) hours today... Let's try harder tomorrow!"
         }
     }
 
     /// 날짜 포맷
     var formattedDate: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년 M월 d일"
-        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "MMM d, yyyy"
+        formatter.locale = Locale(identifier: "en_US")
         return formatter.string(from: date)
     }
 
@@ -57,11 +57,11 @@ struct DailyReport: Codable, Identifiable {
         let hours = seconds / 3600
         let minutes = (seconds % 3600) / 60
         if hours > 0 {
-            return "\(hours)시간 \(minutes)분"
+            return "\(hours)h \(minutes)m"
         } else if minutes > 0 {
-            return "\(minutes)분"
+            return "\(minutes)m"
         } else {
-            return "\(seconds)초"
+            return "\(seconds)s"
         }
     }
 }

@@ -59,7 +59,7 @@ struct ScreenGuiltyApp: App {
         .menuBarExtraStyle(.window)
 
         // 설정 창
-        Window("설정", id: "settings") {
+        Window("Settings", id: "settings") {
             SettingsView(appState: appState)
         }
         .windowResizability(.contentSize)
@@ -67,7 +67,7 @@ struct ScreenGuiltyApp: App {
         .keyboardShortcut(",", modifiers: .command)
 
         // 일일 리포트 창
-        Window("일일 리포트", id: "daily-report") {
+        Window("Daily Report", id: "daily-report") {
             DailyReportView(appState: appState)
         }
         .windowResizability(.contentSize)

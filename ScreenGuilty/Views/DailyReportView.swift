@@ -48,14 +48,14 @@ struct DailyReportView: View {
     private var headerSection: some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
-                Text("오늘의 죄책감 리포트")
+                Text("Today's Guilt Report")
                     .font(.headline)
                 Text(report.formattedDate)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
             Spacer()
-            Button("닫기") { dismiss() }
+            Button("Close") { dismiss() }
         }
         .padding(16)
     }
@@ -83,7 +83,7 @@ struct DailyReportView: View {
                 Text("\(report.productivityScore)%")
                     .font(.title2)
                     .fontWeight(.bold)
-                Text("생산성")
+                Text("Productivity")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
@@ -94,13 +94,13 @@ struct DailyReportView: View {
     private var timeStatsSection: some View {
         HStack(spacing: 16) {
             statCard(
-                title: "업무 시간",
+                title: "Productive Time",
                 value: report.formattedProductiveTime,
                 icon: "laptopcomputer",
                 color: .green
             )
             statCard(
-                title: "딴짓 시간",
+                title: "Distraction Time",
                 value: report.formattedDistractionTime,
                 icon: "gamecontroller.fill",
                 color: .red
@@ -131,7 +131,7 @@ struct DailyReportView: View {
     // MARK: - TOP 딴짓 앱
     private var topAppsSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("딴짓 앱 TOP \(report.topApps.count)")
+            Text("Top \(report.topApps.count) Distractions")
                 .font(.subheadline)
                 .fontWeight(.semibold)
 
@@ -194,13 +194,13 @@ struct DailyReportView: View {
             Button {
                 saveReportAsImage()
             } label: {
-                Label("이미지로 저장", systemImage: "square.and.arrow.down")
+                Label("Save as Image", systemImage: "square.and.arrow.down")
             }
             .buttonStyle(.bordered)
 
             Spacer()
 
-            Button("확인") { dismiss() }
+            Button("OK") { dismiss() }
                 .buttonStyle(.borderedProminent)
         }
         .padding(16)
@@ -211,7 +211,7 @@ struct DailyReportView: View {
         // 저장 다이얼로그
         let panel = NSSavePanel()
         panel.allowedContentTypes = [.png]
-        panel.nameFieldStringValue = "ScreenGuilty_리포트_\(report.formattedDate).png"
+        panel.nameFieldStringValue = "ScreenGuilty_Report_\(report.formattedDate).png"
 
         panel.begin { response in
             guard response == .OK, let _ = panel.url else { return }
@@ -234,8 +234,8 @@ class DailyReportScheduler {
             guard granted else { return }
 
             let content = UNMutableNotificationContent()
-            content.title = "오늘의 죄책감 리포트"
-            content.body = "오늘 하루 어떻게 보냈는지 확인해보세요!"
+            content.title = "Today's Guilt Report"
+            content.body = "Check how you spent your day!"
             content.sound = .default
 
             // 매일 18:00에 알림
