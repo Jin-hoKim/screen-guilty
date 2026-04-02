@@ -1,5 +1,15 @@
 # ScreenGuilty — Change Log
 
+## 2026-04-02 (4차)
+
+### 앱 완성도 마무리 검증
+
+- **사운드 파일 확인**: working.mp3, peaceful.mp3, sad.mp3, crying.mp3 모두 Resources/Sounds/에 존재 확인
+- **캐릭터 파일 확인**: working.json이 Resources/Characters/에 존재 확인 (Lottie 5.12.1 포맷)
+- **감정 임계값 확인**: EmotionThresholds.swift — disappointed: 120초, sad: 300초, crying: 900초, angry: 1800초 (정상)
+- **번들 포함 확인**: Resources 폴더 레퍼런스로 프로젝트에 포함, 빌드 결과물에 모든 파일 정상 복사됨
+- **빌드 성공**: xcodebuild Debug 빌드 오류/경고 없음
+
 ## 2026-04-02 (3차)
 
 ### 코드 서명 설정 완료
